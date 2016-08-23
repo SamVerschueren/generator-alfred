@@ -1,0 +1,61 @@
+{
+  "name": "generator-alfred",
+  "version": "0.0.0",
+  "description": "Scaffold out an Alfred workflow",
+  "license": "MIT",
+  "repository": "SamVerschueren/generator-alfred",
+  "author": {
+    "name": "Sam Verschueren",
+    "email": "sam.verschueren@gmail.com",
+    "url": "github.com/SamVerschueren"
+  },
+  "maintainers": [
+    {
+      "name": "Sindre Sorhus",
+      "email": "sindresorhus@gmail.com",
+      "url": "sindresorhus.com"
+    }
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "scripts": {
+    "test": "xo && ava"
+  },
+  "files": [
+    "app"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "plugin",
+    "boilerplate",
+    "template",
+    "scaffold",
+    "alfred",
+    "alfy",
+    "workflow",
+    "init"
+  ],
+  "dependencies": {
+    "humanize-url": "^1.0.1",
+    "normalize-url": "^1.6.0",
+    "superb": "^1.3.0",
+    "underscore.string": "^3.3.4",
+    "uuid": "^2.0.2",
+    "yeoman-generator": "^0.24.1"
+  },
+  "devDependencies": {
+    "ava": "*",
+    "pify": "^2.3.0",
+    "tempfile": "^1.1.1",
+    "xo": "*",
+    "yeoman-assert": "^2.2.1",
+    "yeoman-test": "^1.4.0"
+  },
+  "xo": {
+    "esnext": true,
+    "ignores": [
+      "app/templates/**"
+    ]
+  }
+}
