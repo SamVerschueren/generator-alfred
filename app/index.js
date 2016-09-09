@@ -60,11 +60,13 @@ module.exports = class extends yeoman.Base {
 		]).then(props => {
 			const repoName = moduleName.repoName(props.moduleName);
 
+			const alfredName = props.moduleName.replace(/^alfred\-/, '');
 			const alfredBundleId = utils.bundleId(props);
 
 			const tpl = {
 				moduleName: props.moduleName,
 				moduleDescription: props.moduleDescription,
+				alfredName,
 				alfredBundleId,
 				alfredCategory: props.alfredCategory,
 				alfredKeyword: props.alfredKeyword,
