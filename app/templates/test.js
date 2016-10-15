@@ -1,12 +1,9 @@
 import test from 'ava';
 import alfyTest from 'alfy-test';
 
-test.beforeEach(t => {
-	t.context.alfy = alfyTest();
-});
-
 test(async t => {
-	const result = await t.context.alfy('Rainbow');
+	const alfy = alfyTest();
+	const result = await alfy('Rainbow');
 
 	t.deepEqual(result, [
 		{
