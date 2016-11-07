@@ -25,7 +25,7 @@ module.exports = class extends yeoman.Base {
 			{
 				name: 'alfredKeyword',
 				message: 'What is the Alfred activation keyword?',
-				default: props => props.moduleName.replace(/^alfred\-/, '')
+				default: props => props.moduleName.replace(/^alfred-/, '')
 			},
 			{
 				name: 'alfredTitle',
@@ -60,7 +60,7 @@ module.exports = class extends yeoman.Base {
 		]).then(props => {
 			const repoName = moduleName.repoName(props.moduleName);
 
-			const alfredName = props.moduleName.replace(/^alfred\-/, '');
+			const alfredName = props.moduleName.replace(/^alfred-/, '');
 			const alfredBundleId = utils.bundleId(props);
 
 			const tpl = {
