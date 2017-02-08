@@ -2,20 +2,27 @@
 const superb = require('superb');
 const normalizeUrl = require('normalize-url');
 const humanizeUrl = require('humanize-url');
-const yeoman = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const _s = require('underscore.string');
 const moduleName = require('./module-name');
 const utils = require('./utils');
 
-module.exports = class extends yeoman.Base {
-
+module.exports = class extends Generator {
 	init() {
 		return this.prompt([
 			{
 				name: 'moduleName',
 				message: 'What do you want to name your module?',
 				default: _s.slugify(this.appname),
-				filter: x => moduleName.slugify(x)
+				filter: x => {
+					let name = moduleName.slugify(x);
+
+					if (!/^alfred-/.test(name)) {
+						name = `alfred-${name}`;
+					}
+
+					return name;
+				}
 			},
 			{
 				name: 'moduleDescription',
@@ -58,21 +65,18 @@ module.exports = class extends yeoman.Base {
 				filter: x => normalizeUrl(x)
 			}
 		]).then(props => {
-			const repoName = moduleName.repoName(props.moduleName);
-
-			const alfredName = props.moduleName.replace(/^alfred-/, '');
-			const alfredBundleId = utils.bundleId(props);
+			props.alfredName = props.moduleName.replace(/^alfred-/, '');
 
 			const tpl = {
 				moduleName: props.moduleName,
 				moduleDescription: props.moduleDescription,
-				alfredName,
-				alfredBundleId,
+				alfredName: props.alfredName,
+				alfredBundleId: utils.bundleId(props),
 				alfredCategory: props.alfredCategory,
 				alfredKeyword: props.alfredKeyword,
 				alfredTitle: props.alfredTitle,
 				githubUsername: this.options.org || props.githubUsername,
-				repoName,
+				repoName: moduleName.repoName(props.moduleName),
 				name: this.user.git.name(),
 				email: this.user.git.email(),
 				website: props.website,

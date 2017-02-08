@@ -7,7 +7,7 @@ import tempfile from 'tempfile';
 
 test.beforeEach(async t => {
 	await pify(helpers.testDirectory)(tempfile());
-	t.context.generator = helpers.createGenerator('alfred', [path.join(__dirname, '/app')], null, {skipInstall: true});
+	t.context.generator = helpers.createGenerator('alfred', [path.join(__dirname, 'app')], null, {skipInstall: true});
 });
 
 test.serial('generates expected files', async t => {
@@ -16,7 +16,7 @@ test.serial('generates expected files', async t => {
 	helpers.mockPrompt(generator, {
 		moduleName: 'test',
 		githubUsername: 'test',
-		website: 'test.com'
+		website: 'http://test.com'
 	});
 
 	await pify(generator.run.bind(generator))();

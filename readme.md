@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save generator-alfred
+$ npm install --global generator-alfred
 ```
 
 
