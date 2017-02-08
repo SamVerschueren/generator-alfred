@@ -2,37 +2,30 @@
 const url = require('url');
 const uuid = require('uuid');
 
-const uuids = Object.create(null);
+const uuids = new Set();
 
 exports.generateUuid = key => {
-	if (key && uuids[key]) {
-		return uuids[key];
+	if (key && uuids.has(key)) {
+		return key;
 	}
 
 	const id = uuid.v4().toUpperCase();
 
 	if (key) {
-		uuids[key] = id;
+		uuids.add(id);
 	}
 
 	return id;
 };
 
 exports.bundleId = props => {
-	let website = props.website;
-
-	if (!/^https?:\/\//.test(website)) {
-		// Make sure website starts with the protocol. `Url.parse` could not handle `test.com` for instance.
-		website = `http://${website}`;
-	}
-
-	const parsed = url.parse(website);
+	const parsed = url.parse(props.website);
 
 	if (parsed.hostname === 'github.com') {
-		return `com.${props.githubUsername.toLowerCase()}.${props.moduleName}`;
+		return `com.${props.githubUsername.toLowerCase()}.${props.alfredName}`;
 	}
 
 	// Reverse hostname
 	const parts = parsed.hostname.split('.');
-	return `${parts[1]}.${parts[0]}.${props.moduleName}`;
+	return `${parts[1]}.${parts[0]}.${props.alfredName}`;
 };

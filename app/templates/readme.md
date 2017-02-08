@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install -g <%= moduleName %>
+$ npm install --global <%= moduleName %>
 ```
 
 *Requires [Node.js](https://nodejs.org) 4+ and the Alfred [Powerpack](https://www.alfredapp.com/powerpack/).*
