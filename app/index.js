@@ -4,7 +4,6 @@ const normalizeUrl = require('normalize-url');
 const humanizeUrl = require('humanize-url');
 const Generator = require('yeoman-generator');
 const _s = require('underscore.string');
-const moduleName = require('./module-name');
 const utils = require('./utils');
 
 module.exports = class extends Generator {
@@ -15,7 +14,7 @@ module.exports = class extends Generator {
 				message: 'What do you want to name your module?',
 				default: _s.slugify(this.appname),
 				filter: x => {
-					let name = moduleName.slugify(x);
+					let name = utils.slugifyPackageName(x);
 
 					if (!name.startsWith('alfred-')) {
 						name = `alfred-${name}`;
@@ -76,7 +75,7 @@ module.exports = class extends Generator {
 				alfredKeyword: props.alfredKeyword,
 				alfredTitle: props.alfredTitle,
 				githubUsername: this.options.org || props.githubUsername,
-				repoName: moduleName.repoName(props.moduleName),
+				repoName: utils.repoName(props.moduleName),
 				name: this.user.git.name(),
 				email: this.user.git.email(),
 				website: props.website,
