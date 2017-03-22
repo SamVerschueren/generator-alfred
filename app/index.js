@@ -17,7 +17,7 @@ module.exports = class extends Generator {
 				filter: x => {
 					let name = moduleName.slugify(x);
 
-					if (!/^alfred-/.test(name)) {
+					if (!name.startsWith('alfred-')) {
 						name = `alfred-${name}`;
 					}
 
