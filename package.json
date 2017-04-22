@@ -53,6 +53,9 @@
     "yeoman-assert": "^2.2.1",
     "yeoman-test": "^1.4.0"
   },
+  "ava": {
+    "failWithoutAssertions": false
+  },
   "xo": {
     "ignores": [
       "app/templates/**"
