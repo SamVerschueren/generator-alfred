@@ -4,17 +4,17 @@ const uuid = require('uuid');
 const _s = require('underscore.string');
 const isScoped = require('is-scoped');
 
-const uuids = new Set();
+const uuids = new Map();
 
 exports.generateUuid = key => {
 	if (key && uuids.has(key)) {
-		return key;
+		return uuids.get(key);
 	}
 
 	const id = uuid.v4().toUpperCase();
 
 	if (key) {
-		uuids.add(id);
+		uuids.set(key, id);
 	}
 
 	return id;
