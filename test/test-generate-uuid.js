@@ -1,5 +1,5 @@
 import test from 'ava';
-import {generateUuid} from './app/utils';
+import {generateUuid} from '../app/utils';
 
 test('remembers UUIDs by key', t => {
 	const foo1 = generateUuid('foo');

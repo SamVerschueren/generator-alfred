@@ -7,7 +7,7 @@ import tempfile from 'tempfile';
 
 test.beforeEach(async t => {
 	await pify(helpers.testDirectory)(tempfile());
-	t.context.generator = helpers.createGenerator('alfred', [path.join(__dirname, 'app')], null, {skipInstall: true});
+	t.context.generator = helpers.createGenerator('alfred', [path.join(__dirname, '../app')], null, {skipInstall: true});
 });
 
 test.serial('generates expected files', async t => {
