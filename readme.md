@@ -5,7 +5,7 @@
 
 ## Install
 
-```
+```sh
 $ npm install --global generator-alfred
 ```
 
@@ -14,7 +14,7 @@ $ npm install --global generator-alfred
 
 With [yo](https://github.com/yeoman/yo):
 
-```
+```sh
 $ yo alfred
 ```
 
