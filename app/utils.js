@@ -1,17 +1,15 @@
-'use strict';
-const url = require('url');
-const uuid = require('uuid');
-const _s = require('underscore.string');
-const isScoped = require('is-scoped');
+import {v4} from 'uuid';
+import _s from 'underscore.string';
+import isScoped from 'is-scoped';
 
 const uuids = new Map();
 
-exports.generateUuid = key => {
+export const generateUuid = key => {
 	if (key && uuids.has(key)) {
 		return uuids.get(key);
 	}
 
-	const id = uuid.v4().toUpperCase();
+	const id = v4().toUpperCase();
 
 	if (key) {
 		uuids.set(key, id);
@@ -20,18 +18,19 @@ exports.generateUuid = key => {
 	return id;
 };
 
-exports.bundleId = props => {
-	const parsed = url.parse(props.website);
+export const bundleId = properties => {
+	const parsed = new URL(properties.website);
 
 	if (parsed.hostname === 'github.com') {
-		return `com.${props.githubUsername.toLowerCase()}.${props.alfredName}`;
+		return `com.${properties.githubUsername.toLowerCase()}.${properties.alfredName}`;
 	}
 
 	// Reverse hostname
 	const parts = parsed.hostname.split('.');
-	return `${parts[1]}.${parts[0]}.${props.alfredName}`;
+	return `${parts[1]}.${parts[0]}.${properties.alfredName}`;
 };
 
-exports.repoName = name => isScoped(name) ? name.split('/')[1] : name;
+export const repoName = name => (isScoped(name) ? name.split('/')[1] : name);
 
-exports.slugifyPackageName = name => isScoped(name) ? name : _s.slugify(name);
+export const slugifyPackageName = name =>
+	isScoped(name) ? name : _s.slugify(name);

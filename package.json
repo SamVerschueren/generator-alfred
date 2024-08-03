@@ -9,6 +9,7 @@
     "email": "sam.verschueren@gmail.com",
     "url": "github.com/SamVerschueren"
   },
+  "type": "module",
   "maintainers": [
     {
       "name": "Sindre Sorhus",
@@ -17,7 +18,7 @@
     }
   ],
   "engines": {
-    "node": ">=4"
+    "node": ">=18"
   },
   "scripts": {
     "test": "xo && ava"
@@ -37,21 +38,22 @@
     "init"
   ],
   "dependencies": {
-    "humanize-url": "^1.0.1",
-    "is-scoped": "^1.0.0",
-    "normalize-url": "^1.6.0",
-    "superb": "^1.3.0",
+    "humanize-url": "^3.0.0",
+    "is-scoped": "^3.0.0",
+    "normalize-url": "^8.0.1",
+    "superb": "^5.0.0",
     "underscore.string": "^3.3.4",
-    "uuid": "^3.0.1",
-    "yeoman-generator": "^1.1.0"
+    "uuid": "^10.0.0",
+    "yeoman-generator": "^7.3.2"
   },
   "devDependencies": {
     "ava": "*",
     "pify": "^2.3.0",
-    "tempfile": "^1.1.1",
+    "tempy": "^3.1.0",
     "xo": "*",
-    "yeoman-assert": "^2.2.1",
-    "yeoman-test": "^1.4.0"
+    "yeoman-assert": "^3.1.1",
+    "yeoman-environment": "^4.4.1",
+    "yeoman-test": "^8.3.0"
   },
   "ava": {
     "failWithoutAssertions": false
